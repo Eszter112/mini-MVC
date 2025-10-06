@@ -2,11 +2,22 @@
 require_once __DIR__ . '/../model/User.php';
 class UserController
 {
+    public $userDao;
 
-    public function afficherName()
+    public function __construct($userDao)
+    {
+        $this->userDao = $userDao;
+    }
+
+
+    public function displayAllUsers()
     {
 
-        $user = new User("ME");
+
+        $users =  $this->userDao->getAllUsers();
+
+
+
         require_once __DIR__ . '/../view/userView.php';
     }
 }

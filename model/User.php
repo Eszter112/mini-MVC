@@ -2,11 +2,14 @@
 
 class User
 {
+    public int $id;
+    public string $nom;
+    public string   $prenom;
 
-    public $name;
-
-    public function __construct($name)
+    public function __construct($id, $nom, $prenom)
     {
-        $this->name = $name;
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
     }
 }
