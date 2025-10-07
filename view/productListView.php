@@ -16,10 +16,11 @@
     ?>
     <?php
     foreach ($products as $product) : ?>
-        <p>Id : <?= htmlspecialchars($product->id) ?></p>
-        <p>Titre : <?= htmlspecialchars($product->nom) ?></p>
-        <p>Prix : <?= htmlspecialchars($product->prix) ?></p>
-
+        <ul>
+            <li>Id : <?= htmlspecialchars($product->id) ?></li>
+            <li>Titre : <?= htmlspecialchars($product->nom) ?></li>
+            <li>Prix : <?= htmlspecialchars($product->prix) ?></li>
+        </ul>
     <?php endforeach ?>
 </body>
 
