@@ -10,10 +10,17 @@
 <body>
     <h1>Nos Produits</h1>
     <?php
-    foreach ($products as $product) {
-        echo "- " . htmlspecialchars($product->title, ENT_QUOTES, 'UTF-8') . " - " . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8') . " € " . "<br>";
-    }
+    // foreach ($products as $product) {
+    //     echo "- " . htmlspecialchars($product->title, ENT_QUOTES, 'UTF-8') . " - " . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8') . " € " . "<br>";
+    // }
     ?>
+    <?php
+    foreach ($products as $product) : ?>
+        <p>Id : <?= htmlspecialchars($product->id) ?></p>
+        <p>Titre : <?= htmlspecialchars($product->nom) ?></p>
+        <p>Prix : <?= htmlspecialchars($product->prix) ?></p>
+
+    <?php endforeach ?>
 </body>
 
 </html>

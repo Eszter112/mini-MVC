@@ -1,8 +1,9 @@
 <?php
-require_once __DIR__ . '/../model/User.php';
-class UserController
+require_once __DIR__ . '/../model/User.php'; //on inclut la classe User ->le controller va utiliser des objets User , donc il faut charger la definition
+
+class UserController //elle gere la logique liee aux users  (affichage, actions)
 {
-    public $userDao;
+    public $userDao; //propriete public l'objet UserDao -> la controller a besoin du DAO pour acceder aux donnees
 
     public function __construct($userDao)
     {
@@ -10,14 +11,10 @@ class UserController
     }
 
 
-    public function displayAllUsers()
+    public function displayAllUsers()   // methode public pour afficher tous les users -> la controller decide quand et comment affichier les donnees
     {
+        $users =  $this->userDao->getAllUsers(); //on demande les users au DAO ->le controller ne fait pas les querys SQL , uniquement du DAO
 
-
-        $users =  $this->userDao->getAllUsers();
-
-
-
-        require_once __DIR__ . '/../view/userView.php';
+        require_once __DIR__ . '/../view/userView.php'; // le controller connecte les donnees a l'affichage HTML
     }
 }

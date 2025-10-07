@@ -1,12 +1,14 @@
 <?php
 class Product
 {
-    public string $title;
-    public $price;
+    public int $id;
+    public string $nom;
+    public float $prix;
 
-    public function __construct($title, $price)
+    public function __construct($id, $nom, $prix)
     {
-        $this->title = $title;
-        $this->price = $price;
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->prix = $prix;
     }
 }

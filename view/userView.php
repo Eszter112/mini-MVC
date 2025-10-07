@@ -10,7 +10,9 @@
 <body>
     <?php
     foreach ($users as $user) : ?>
-        <p>Utilisateurs : <?= htmlspecialchars($user->nom, ENT_QUOTES, 'UTF-8') ?></p>
+        <p>Id : <?= htmlspecialchars($user->id) ?></p>
+        <p>Prenom : <?= htmlspecialchars($user->prenom) ?></p>
+        <p>Nom : <?= htmlspecialchars($user->nom) ?></p>
     <?php endforeach ?>
 </body>
 
