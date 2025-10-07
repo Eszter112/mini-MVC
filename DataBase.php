@@ -1,4 +1,7 @@
 <?php
+
+// PDO-> PHP Data Object
+// c'est une interface en PHP qui permet de se connecter a une BDD et d'executer les requettes SQL
 class DataBase    //la classe DataBase pour gerer la connexion a la base de donnees
 {
     private static  ?PDO $pdo = null; //?PDO <= la variable peut etre un objet PDO (connexion active a la base de donnees) ou null(aucun connexion encore) , type nullable

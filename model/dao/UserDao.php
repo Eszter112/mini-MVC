@@ -20,9 +20,30 @@ class UserDao   // on cree une classe pour gerer les users dans BDD -> pour sepa
 
         $users = []; //on creeer un tableau vide pour stocker les objets -> pour objets Users
         foreach ($data as  $user) {
-            $user = new User($user["id"], $user["Nom"], $user["Prenom"]); //on creer on objet user pour chaque ligne  
+            $user = new User($user["id"], $user["Nom"], $user["Prenom"], $user["description"]); //on creer on objet user pour chaque ligne  
             $users[] = $user;
         }
         return $users; //on return tous les users -> le controller a besoin des donnees pour les afficher  
+    }
+
+
+    public function getUserById($id)
+    {
+        $query = "SELECT * FROM `user` WHERE `id`=:id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':id' => $id]);
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($data) {
+            return new User($data["id"], $data["Nom"], $data["Prenom"], $data["description"]);
+        }
+        return null; //si pas de produit trouvé
+    }
+
+    public function deleteUserById($id)
+    {
+        $query = " DELETE FROM `user` WHERE `id` = :id";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([":id" => $id]);
     }
 }

@@ -1,3 +1,4 @@
+<?php var_dump($products); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,19 +10,30 @@
 
 <body>
     <h1>Nos Produits</h1>
+
+
+    <a href="index.php?page=user&action=showUser">Users</a>
+    <a href="indx.php?page=product&action=showProduct">Products</a>
+
+    <br>
     <?php
-    // foreach ($products as $product) {
-    //     echo "- " . htmlspecialchars($product->title, ENT_QUOTES, 'UTF-8') . " - " . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8') . " € " . "<br>";
-    // }
-    ?>
-    <?php
+
+
     foreach ($products as $product) : ?>
-        <ul>
-            <li>Id : <?= htmlspecialchars($product->id) ?></li>
-            <li>Titre : <?= htmlspecialchars($product->nom) ?></li>
-            <li>Prix : <?= htmlspecialchars($product->prix) ?></li>
-        </ul>
+
+        <p>Id : <?= htmlspecialchars($product->id) ?></p>
+        <h3><?= htmlspecialchars($product->nom) ?></h3>
+        <p>Prix : <?= htmlspecialchars($product->prix) ?></p>
+
+
+        <p><?= htmlspecialchars($product->description) ?></p>
+
+
+        <a href="index.php?page=product&action=detailProduct&id=<?= htmlspecialchars($product->id) ?>">Description</a>
+        <a href="index.php?page=product&action=delete&id=<?= htmlspecialchars($product->id) ?>">Supprimer</a>
     <?php endforeach ?>
+
+
 </body>
 
 </html>

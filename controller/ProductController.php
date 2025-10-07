@@ -15,26 +15,31 @@ class ProductController
 
     public function displayAllProducts()
     {
+
         $products = $this->productDao->getAllProducts();
         require_once __DIR__ . '/../view/productListView.php';
     }
-
-
-    // public function showProducts()
-    // {
-    //     $products = [
-    //         new Product("Produit 1", "prix"),
-    //         new Product("Produit 2", "prix"),
-    //         new Product("Produit 3", "prix")
-
-
-    //     ];
-    //     require_once __DIR__ . '/../view/productListView.php';
-    // }
-
     // public function showProduct()
     // {
-    //     $product = new Product("pomme", 5);
+    //     $product = new Product(1, "", 2, "");
     //     require_once __DIR__ . '/../view/productView.php';
     // }
+    public function displayProductById()
+    {
+        $id = $_GET["id"];
+        $product = $this->productDao->getProductById($id);
+
+
+        // require_once __DIR__ . '/../view/productListView.php';
+        require_once __DIR__ . '/../view/descriptionProduct.php';
+    }
+
+
+    public function deleteProduct()
+    {
+        $id = $_GET["id"];
+        $deleteProduct = $this->productDao->deleteProductById($id);
+        header('location: index.php?page=product');
+        exit;
+    }
 }
