@@ -37,7 +37,7 @@ class UserDao   // on cree une classe pour gerer les users dans BDD -> pour sepa
         if ($data) {
             return new User($data["id"], $data["Nom"], $data["Prenom"], $data["description"]);
         }
-        return null; //si pas de produit trouvé
+        return null;
     }
 
     public function deleteUserById($id)
@@ -45,5 +45,20 @@ class UserDao   // on cree une classe pour gerer les users dans BDD -> pour sepa
         $query = " DELETE FROM `user` WHERE `id` = :id";
         $stmt = $this->pdo->prepare($query);
         return $stmt->execute([":id" => $id]);
+    }
+
+    public function addUser($prenom, $nom, $description)
+    {
+        $query = "INSERT INTO user (prenom , nom ,description) VALUE (:prenom, :nom ,  :description)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":nom" => $nom, ":prenom" => $prenom, ":description" => $description]);
+    }
+
+
+    public function updateUser($id, $prenom, $nom, $description)
+    {
+        $query = "UPDATE user SET prenom= :prenom , nom =:nom , description = :description  WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":id" => $id, ":prenom" => $prenom,  ":nom" => $nom, ":description" => $description]);
     }
 }

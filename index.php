@@ -46,6 +46,11 @@
                 case "delete":
                     $user->deleteUser();
                     break;
+                case 'addUser':
+                    $user->addUser();
+                    break;
+                case 'updateUser':
+                    $user->updateUser();
             }
             break;
         case "product":
@@ -61,6 +66,12 @@
                     break;
                 case 'delete':
                     $product->deleteProduct();
+                    break;
+                case 'addProduct':
+                    $product->addProduct();
+                    break;
+                case 'updateProduct':
+                    $product->updateProduct();
                     break;
             }
             // default:

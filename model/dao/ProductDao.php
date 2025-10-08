@@ -48,4 +48,26 @@ class ProductDao
         // header('location: index.php?page=product');
         // exit;
     }
+
+    public function addProduit($nom, $description, $prix)
+    {
+        $query = "INSERT INTO produit (nom, description, prix) VALUE (:nom , :description, :prix)";
+        $stmt = $this->pdo->prepare($query);
+
+
+
+        $stmt->execute([":nom" => $nom, ":description" => $description, ":prix" => $prix]);
+    }
+
+    public function updateProduit($id, $nom, $description, $prix)
+    {
+        $query = "UPDATE produit SET nom =:nom , description = :description , prix = :prix  WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([":id" => $id, ":nom" => $nom, ":description" => $description, ":prix" => $prix]);
+    }
 }
+
+
+// UPDATE Customers
+// SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+// WHERE CustomerID = 1;

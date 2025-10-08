@@ -8,8 +8,13 @@
 </head>
 
 <body>
-    <p>Description:
-        <?= htmlspecialchars($product->description) ?></p>
+
+    <h2> <?= htmlentities($product->nom) ?></h2>
+    <p> <?= htmlentities($product->prix) ?> €</p>
+    <p>Description:</p>
+    <?= htmlspecialchars($product->description) ?></p>
+    <a href="index.php?page=product&action=showProduct">
+        <<<< Retour a la page prècèdente</a>
 
 </body>
 

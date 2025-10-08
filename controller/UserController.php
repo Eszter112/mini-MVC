@@ -30,9 +30,34 @@ class UserController //elle gere la logique liee aux users  (affichage, actions)
 
     public function deleteUser()
     {
-        $id = $_GET["id"];
-        $deleteUser = $this->userDao->deleteUserById($id);
+        $id = $_POST["id"];
+
+        $this->userDao->deleteUserById($id);
         header('location: index.php?page=user');
+        exit;
+    }
+
+    public function addUser()
+    {
+        $prenom = $_POST["prenom"];
+        $nom = $_POST["nom"];
+        $description = $_POST["description"];
+
+        $this->userDao->addUser($prenom, $nom, $description);
+        header('location:index.php?page=user');
+        exit;
+    }
+
+    public function updateUser()
+    {
+        $id = $_POST['id'];
+        $prenom = $_POST['prenom'];
+        $nom = $_POST['nom'];
+        $description =  $_POST['description'];
+        // }
+        $this->userDao->updateUser($id, $prenom,  $nom, $description);
+
+        header('location: index.php?page=user&action=showUser');
         exit;
     }
 }

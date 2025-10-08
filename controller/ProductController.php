@@ -37,9 +37,39 @@ class ProductController
 
     public function deleteProduct()
     {
-        $id = $_GET["id"];
-        $deleteProduct = $this->productDao->deleteProductById($id);
-        header('location: index.php?page=product');
+
+        $id = $_POST["id"];
+        $this->productDao->deleteProductById($id);
+        header('location: index.php?page=product&action=showProduct');
+        exit;
+    }
+
+    public function addProduct()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nom = $_POST['nom'];
+            $prix = $_POST['prix'];
+            $description =  $_POST['description'];
+        }
+
+        $this->productDao->addProduit($nom, $description, $prix);
+
+        header('location: index.php?page=product&action=showProduct');
+        exit;
+    }
+
+    public function updateProduct()
+    {
+
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'];
+        $nom = $_POST['nom'];
+        $prix = $_POST['prix'];
+        $description =  $_POST['description'];
+        // }
+        $this->productDao->updateProduit($id, $nom,  $description, $prix);
+
+        header('location: index.php?page=product&action=showProduct');
         exit;
     }
 }
